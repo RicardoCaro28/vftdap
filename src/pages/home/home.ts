@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController,AlertController,reorderArray } from 'ionic-angular';
+import { AlmacenTareasPage } from '../almacen-tareas/almacen-tareas';
 
 @Component({
   selector: 'page-home',
@@ -9,6 +10,7 @@ export class HomePage {
 
   public tareas = [];
   public activado = false;
+  public goAlmacen = AlmacenTareasPage;
 
   constructor(public navCtrl: NavController, private alertController: AlertController) {
 
@@ -44,5 +46,10 @@ export class HomePage {
   elementoReordenado($event){
 
     reorderArray(this.tareas,$event);
+  }
+
+
+  irAalmacen(){
+    this.navCtrl.push(AlmacenTareasPage);
   }
 }///clase
