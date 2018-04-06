@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ServicioTareasProvider } from '../../providers/servicio-tareas/servicio-tareas';
 
 /**
  * Generated class for the AlmacenTareasPage page.
@@ -14,12 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'almacen-tareas.html',
 })
 export class AlmacenTareasPage {
+  public tareasAlmacenadas=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private servicioTareas: ServicioTareasProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlmacenTareasPage');
+    this.tareasAlmacenadas = this.servicioTareas.getAlmacen();
   }
 
 }

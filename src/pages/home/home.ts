@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController,reorderArray } from 'ionic-angular';
+import { NavController,AlertController,reorderArray,ToastController } from 'ionic-angular';
 import { AlmacenTareasPage } from '../almacen-tareas/almacen-tareas';
 import { ServicioTareasProvider } from '../../providers/servicio-tareas/servicio-tareas';
 
@@ -14,7 +14,10 @@ export class HomePage {
   public goAlmacen = AlmacenTareasPage;
 
   constructor(public navCtrl: NavController, private alertController: AlertController,
-     private servicioTareas: ServicioTareasProvider ) {
+     private servicioTareas: ServicioTareasProvider,
+     private toastController: ToastController
+    
+    ) {
        this.tareas = this.servicioTareas.getTarea();
 
   }
@@ -35,6 +38,16 @@ export class HomePage {
               tareaTxt = inputData.agregarTarea;
               //this.tareas.push(tareaTxt);
               this.servicioTareas.addTarea(tareaTxt);
+              agregarAlerta.onDidDismiss(()=>{
+                let agregaToast = this.toastController.create({
+                  message:"La tarea fue agregada",
+                  duration: 3000
+                });
+                agregaToast.present();
+              })
+
+              
+              
             }
           }]
 
@@ -61,4 +74,39 @@ export class HomePage {
   alamacenarTarea(tareaIndex){
     this.servicioTareas.alamacenarTarea(tareaIndex);
   }
+
+
+  editarTarea(tareaIndex){
+    let editaAlerta = this.alertController.create({
+        title:"Editar Tarea",
+        message:"Edita tu tarea",
+        inputs:[{
+          type:"text",name:"editaTarea", value:this.tareas[tareaIndex]
+        }],
+        buttons:[{
+          text:"cancelar"},
+          {
+            text:"Editar", 
+            handler:(inputData) =>{
+              let tareaTxt;
+              tareaTxt = inputData.editaTarea;
+              //this.tareas.push(tareaTxt);
+              this.servicioTareas.editarTarea(tareaTxt,tareaIndex);
+              editaAlerta.onDidDismiss(()=>{
+                let editaToast = this.toastController.create({
+                  message:"La tarea fue modificada",
+                  duration: 3000
+                });
+                editaToast.present();
+              })
+
+              
+              
+            }
+          }]
+
+    });
+    editaAlerta.present();
+  }///cierrer abrirAlerta
+
 }///clase

@@ -22,9 +22,18 @@ private tareasAlmacenadas=[];
     this.tareas.push(tareaTxt)
   }
 
+  getAlmacen(){
+    return this.tareasAlmacenadas;
+  }
+
   alamacenarTarea(tareaIndex){
     let tareaAarchivar = this.tareas[tareaIndex];
     this.tareas.splice(tareaIndex,1);
     this.tareasAlmacenadas.push(tareaAarchivar);
+  }
+
+
+  editarTarea(tarea, tareaIndex){
+    this.tareas[tareaIndex]=tarea; 
   }
 }
