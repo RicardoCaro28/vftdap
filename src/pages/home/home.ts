@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,AlertController,reorderArray } from 'ionic-angular';
 import { AlmacenTareasPage } from '../almacen-tareas/almacen-tareas';
+import { ServicioTareasProvider } from '../../providers/servicio-tareas/servicio-tareas';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +13,8 @@ export class HomePage {
   public activado = false;
   public goAlmacen = AlmacenTareasPage;
 
-  constructor(public navCtrl: NavController, private alertController: AlertController) {
+  constructor(public navCtrl: NavController, private alertController: AlertController,
+     private servicioTareas: ServicioTareasProvider ) {
 
   }
 
