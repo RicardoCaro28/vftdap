@@ -4,6 +4,8 @@
       App ToDo
     </ion-title>
     <ion-buttons end>
+      <button (click)="reordena()" ion-button *ngIf="!activado">Editar</button>
+      <button (click)="reordena()" ion-button  *ngIf="activado"> Fin</button>
       <button ion-button (click)="abrirAlerta()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -12,7 +14,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <ion-list [reorder]="activado">
     <ion-item-sliding *ngFor="let tarea of tareas">
       <ion-item>{{tarea}}</ion-item>
       <ion-item-options side="right">
