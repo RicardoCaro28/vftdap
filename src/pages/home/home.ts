@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
+import { NavController,AlertController,reorderArray } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -41,4 +41,8 @@ export class HomePage {
     this.activado = !this.activado;
   }
   
+  elementoReordenado($event){
+
+    reorderArray(this.tareas,$event);
+  }
 }///clase
