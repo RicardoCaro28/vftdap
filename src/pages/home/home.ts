@@ -15,6 +15,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private alertController: AlertController,
      private servicioTareas: ServicioTareasProvider ) {
+       this.tareas = this.servicioTareas.getTarea();
 
   }
 
@@ -32,7 +33,8 @@ export class HomePage {
             handler:(inputData) =>{
               let tareaTxt;
               tareaTxt = inputData.agregarTarea;
-              this.tareas.push(tareaTxt);
+              //this.tareas.push(tareaTxt);
+              this.servicioTareas.addTarea(tareaTxt);
             }
           }]
 

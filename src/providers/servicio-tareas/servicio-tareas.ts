@@ -9,9 +9,15 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ServicioTareasProvider {
-
+private tareas=[];
   constructor(public http: HttpClient) {
     console.log('Hello ServicioTareasProvider Provider');
   }
 
+  getTarea(){
+    return this.tareas;
+  }
+  addTarea(tareaTxt){
+    this.tareas.push(tareaTxt)
+  }
 }
