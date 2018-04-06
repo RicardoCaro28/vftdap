@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list [reorder]="activado">
+  <ion-list [reorder]="activado" (ionItemReorder)="elementoReordenado($event)">
     <ion-item-sliding *ngFor="let tarea of tareas">
       <ion-item>{{tarea}}</ion-item>
       <ion-item-options side="right">
