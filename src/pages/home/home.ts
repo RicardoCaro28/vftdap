@@ -8,6 +8,7 @@ import { NavController,AlertController } from 'ionic-angular';
 export class HomePage {
 
   public tareas = [];
+  public activado = false;
 
   constructor(public navCtrl: NavController, private alertController: AlertController) {
 
@@ -34,5 +35,10 @@ export class HomePage {
     });
     agregarAlerta.present();
   }///cierrer abrirAlerta
+
+
+  reordena(){
+    this.activado = !this.activado;
+  }
   
 }///clase
