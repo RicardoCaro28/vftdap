@@ -7,6 +7,8 @@ import { NavController,AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
+  public tareas = [];
+
   constructor(public navCtrl: NavController, private alertController: AlertController) {
 
   }
@@ -21,7 +23,12 @@ export class HomePage {
         buttons:[{
           text:"cancelar"},
           {
-            text:"Agregar"
+            text:"Agregar", 
+            handler:(inputData) =>{
+              let tareaTxt;
+              tareaTxt = inputData.agregarTarea;
+              this.tareas.push(tareaTxt);
+            }
           }]
 
     });
