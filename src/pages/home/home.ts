@@ -56,4 +56,9 @@ export class HomePage {
   irAalmacen(){
     this.navCtrl.push(AlmacenTareasPage);
   }
+
+
+  alamacenarTarea(tareaIndex){
+    this.servicioTareas.alamacenarTarea(tareaIndex);
+  }
 }///clase

@@ -15,10 +15,10 @@
 
 <ion-content padding>
   <ion-list [reorder]="activado" (ionItemReorder)="elementoReordenado($event)">
-    <ion-item-sliding *ngFor="let tarea of tareas">
+    <ion-item-sliding *ngFor="let tarea of tareas; let tareaIndex = index">
       <ion-item>{{tarea}}</ion-item>
       <ion-item-options side="right">
-        <button color="danger" ion-button>
+        <button color="danger" ion-button (click)="alamacenarTarea(tareaIndex)">
           <ion-icon name="trash"></ion-icon>
         </button>
 

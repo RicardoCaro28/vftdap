@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ServicioTareasProvider {
 private tareas=[];
+private tareasAlmacenadas=[];
   constructor(public http: HttpClient) {
     console.log('Hello ServicioTareasProvider Provider');
   }
@@ -19,5 +20,11 @@ private tareas=[];
   }
   addTarea(tareaTxt){
     this.tareas.push(tareaTxt)
+  }
+
+  alamacenarTarea(tareaIndex){
+    let tareaAarchivar = this.tareas[tareaIndex];
+    this.tareas.splice(tareaIndex,1);
+    this.tareasAlmacenadas.push(tareaAarchivar);
   }
 }
